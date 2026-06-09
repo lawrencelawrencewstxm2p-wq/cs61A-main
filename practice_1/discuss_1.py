@@ -100,3 +100,54 @@ print(unique_digits(123454321))
 print(unique_digits(123456789))
 '''
 
+def repeating_diy(t,n):
+    assert t>1 and n>0,'t,n aren\'t postive'
+    k=0
+    sheng,yu=n//10,n%10
+    while sheng!=0 or yu!=0:
+        sheng,yu=sheng//10,sheng%10
+        k+=1
+
+    if k%t!=0 or k/t<=1:
+        return False
+    
+    diliver=1
+    time=1
+    while time<=k/t-1:
+        diliver=diliver*pow(10,t)+1
+        time+=1
+    
+    if n%diliver==0:
+        return True
+    else:
+        return False
+    
+def repeating(t,n):
+    if pow(10,t-1)>n:
+        return False
+    end = n%pow(10,t)
+    rest = n
+    while rest:
+        if rest % pow(10,t)!=end:
+            return False
+        rest=rest//pow(10,t)
+    return True
+
+    
+print(repeating(3,123123123))
+print(repeating(3,12312313))
+print(repeating(3,123123125))
+print(repeating(3,3))
+print(repeating(2,58585858))
+print(repeating(4,89458945))
+print ('\n')
+print(repeating(3,123123123))
+print(repeating(3,12312313))
+print(repeating(3,123123125))
+print(repeating(3,3))
+print(repeating(2,58585858))
+print(repeating(4,89458945))
+
+    
+
+
